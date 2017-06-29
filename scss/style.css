@@ -1,0 +1,68 @@
+.content .users .list, .content .scenario-name .list-user {
+  width: 100%; }
+  .content .users .list thead th, .content .scenario-name .list-user thead th {
+    display: block; }
+  .content .users .list tbody, .content .scenario-name .list-user tbody {
+    display: block;
+    height: 360px;
+    overflow-y: auto; }
+    .content .users .list tbody tr, .content .scenario-name .list-user tbody tr {
+      display: block; }
+    .content .users .list tbody tr:after, .content .scenario-name .list-user tbody tr:after {
+      content: ' ';
+      display: block;
+      visibility: hidden;
+      clear: both; }
+    .content .users .list tbody td, .content .scenario-name .list-user tbody td {
+      display: block; }
+
+.content {
+  margin-top: 15px; }
+  .content .users {
+    border-right: 2px solid dodgerblue; }
+    .content .users .list {
+      margin-top: 30px; }
+      .content .users .list .user-id {
+        width: 40%;
+        float: left;
+        word-wrap: break-word; }
+        .content .users .list .user-id input, .content .users .list .user-id label {
+          margin: 0; }
+      .content .users .list .user-name {
+        width: 60%;
+        float: left;
+        word-wrap: break-word; }
+    .content .users .row {
+      height: 100%; }
+    .content .users #add-btn {
+      float: left;
+      margin-top: 20px; }
+  .content .scenario-name h2 {
+    margin: 0px; }
+  .content .scenario-name h3 {
+    margin: 0px 0px 5px 0px; }
+  .content .scenario-name .list-user .list-id {
+    width: 30%;
+    float: left;
+    word-wrap: break-word; }
+  .content .scenario-name .list-user .list-name {
+    width: 15%;
+    float: left;
+    word-wrap: break-word; }
+  .content .scenario-name .list-user .list-age {
+    width: 15%;
+    float: left;
+    word-wrap: break-word; }
+  .content .scenario-name .list-user .list-email {
+    width: 30%;
+    float: left;
+    word-wrap: break-word; }
+  .content .scenario-name .list-user .list-undo {
+    width: 10%;
+    float: left;
+    word-wrap: break-word; }
+  .content .scenario-name .list-user .close {
+    color: red;
+    float: left; }
+
+/*# sourceMappingURL=style.css.map */

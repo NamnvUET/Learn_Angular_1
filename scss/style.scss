@@ -1,0 +1,91 @@
+//Table with Thead fixed
+%table-fixed {
+  width: 100%;
+  thead th{
+    display: block;
+  }
+  tbody{
+    display: block;
+    height: 360px;
+    overflow-y: auto;
+    tr{
+      display: block;
+    }
+    tr:after {
+      content: ' ';
+      display: block;
+      visibility: hidden;
+      clear: both;
+    }
+    td{
+      display: block;
+    }
+  }
+}
+//Fix width column of table-fixed
+@mixin fix-col($width){
+  width: $width;
+  float: left;
+  word-wrap: break-word;
+}
+
+.content {
+  margin-top: 15px;
+  .users {
+    border-right: 2px solid dodgerblue;
+    .list {
+      margin-top: 30px;
+      @extend %table-fixed;
+      .user-id{
+        @include fix-col(40%);
+        input{
+          margin: 0;
+        }
+        label{
+          @extend input;
+        }
+      }
+      .user-name{
+        @include fix-col(60%);
+      }
+    }
+    .row {
+      height: 100%;
+    }
+    #add-btn {
+      float: left;
+      margin-top: 20px;
+    }
+  }
+
+  .scenario-name {
+    h2 {
+      margin: 0px;
+    }
+    h3 {
+      margin: 0px 0px 5px 0px;
+    }
+    .list-user {
+      @extend %table-fixed;
+      .list-id{
+        @include fix-col(30%);
+      }
+      .list-name{
+        @include fix-col(15%);
+      }
+      .list-age{
+        @include fix-col(15%);
+      }
+      .list-email{
+        @include fix-col(30%);
+      }
+      .list-undo{
+        @include fix-col(10%);
+      }
+      .close {
+        color: red;
+        float: left;
+      }
+    }
+  }
+}
