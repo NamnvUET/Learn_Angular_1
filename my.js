@@ -8,6 +8,8 @@ app.controller('users',function ($scope, $http) {
 
     $scope.listUsers = [];
 
+    $scope.itemToUndo = '';
+
     //Get searchText from input field to filter
     $scope.getSearchText = function (text) {
         $scope.searchText = text;
@@ -22,13 +24,13 @@ app.controller('users',function ($scope, $http) {
     }
 
     //Check checkbox status
-    $scope.checked = function (id) {
-        if (id.checked == true) {
-            $scope.temp.push({name: id.name, id: id.id, age: id.age, email: id.email});
+    $scope.checked = function (item) {
+        if (item.checked == true) {
+            $scope.temp.push({name: item.name, id: item.id, age: item.age, email: item.email});
         }
         //Else(unchecked), find item by item.id and remove it
         else {
-            var index = $scope.temp.map(x => x.id).indexOf(id.id);
+            var index = $scope.temp.map(x => x.id).indexOf(item.id);
             $scope.temp.splice(index,1);
         }
     }
@@ -37,8 +39,7 @@ app.controller('users',function ($scope, $http) {
     $scope.addSelected = function()
     {
         //If input checkAll selected
-        if($scope.checkAll == true)
-        {
+        if($scope.checkAll == true) {
             // if(userconfirm == true)
             // {
                 $scope.temp = $scope.temp.concat($scope.users);
@@ -48,8 +49,7 @@ app.controller('users',function ($scope, $http) {
             // }
         }
 
-        if($scope.temp.length != 0)
-        {
+        if($scope.temp.length != 0) {
             //Add temp array into listUsers array and remove all item
             //in users array which has id = temp.item.id
             $scope.listUsers = $scope.listUsers.concat($scope.temp);
@@ -60,33 +60,34 @@ app.controller('users',function ($scope, $http) {
             }
             //Remove all item of temp array
             $scope.temp = [];
-        }
-        else{
+        } else{
             alert("Bạn chưa chọn User để Add");
         }
     }
 
-    //When click back button
-    $scope.undo = function(id){
-        //Push it back users array
-        var userConfirm = confirm("Are you sure ? ");
-        if(userConfirm == true){
-            $scope.users.push({name: id.name,id: id.id, age:id.age, email:id.email});
+    $scope.get = function (item) {
+        $scope.itemToUndo = item;
+    }
+
+    // When click yesConfirm
+    $scope.yesConfirm = function(){
+        if($scope.itemToUndo != ''){
+            // Push it back users array
+            $scope.users.push({name: $scope.itemToUndo.name,id: $scope.itemToUndo.id, age:$scope.itemToUndo.age, email:$scope.itemToUndo.email});
             //Remove it in listUsers
-            var index = $scope.listUsers.map(x => x.id).indexOf(id.id);
+            var index = $scope.listUsers.map(x => x.id).indexOf($scope.itemToUndo.id);
             $scope.listUsers.splice(index,1);
+            $scope.idToUndo = '';
         }
     }
-    
+
     //Sort ListUsers By Field
     var sort = true;
     $scope.orderByMe = function(field){
-        if(sort == true)
-        {
+        if(sort == true) {
             $scope.myOrder = "+" + field;
             sort = false;
-        }
-        else{
+        } else{
             $scope.myOrder = "-" + field;
             sort = true;
         }

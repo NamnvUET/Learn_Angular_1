@@ -1,7 +1,7 @@
 //Table with Thead fixed
 %table-fixed {
   width: 100%;
-  thead th{
+  thead > th{
     display: block;
   }
   tbody{

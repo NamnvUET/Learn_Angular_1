@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Ăng gu lờ 1</title>
+    <!--JQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--Bootstrap JS-->
+    <script src="./bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     <!--Bootstrap-->
     <link rel="stylesheet" href="./bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <!--AngularJS-->
@@ -37,21 +41,21 @@
                             <div class="row">
                                 <table class="table table-striped ">
                                     <thead>
-                                    <th class="user-id">
-                                        <input type="checkbox" ng-model="checkAll" id="checkAll">
-                                        <label for="checkAll">Select All</label>
-                                    </th>
-                                    <th class="user-name">UserName</th>
+                                        <th class="user-id">
+                                            <input type="checkbox" ng-model="checkAll" id="checkAll">
+                                            <label for="checkAll">Select All</label>
+                                        </th>
+                                        <th class="user-name">UserName</th>
                                     </thead>
                                     <tbody>
-                                    <tr ng-repeat="x in users | filter: {name: ''+ searchText}">
-                                        <td class="user-id">
-                                            <input type="checkbox" id="{{x.id}}" ng-checked="checkAll" ng-model="x.checked" ng-change="checked(x)" class="list-checkbox">
-                                        </td>
-                                        <td class="user-name">
-                                            <label for="{{x.id}}">{{x.name}}</label>
-                                        </td>
-                                    </tr>
+                                        <tr ng-repeat="x in users | filter: {name: ''+ searchText}">
+                                            <td class="user-id">
+                                                <input type="checkbox" id="{{x.id}}" ng-checked="checkAll" ng-model="x.checked" ng-change="checked(x)" class="list-checkbox">
+                                            </td>
+                                            <td class="user-name">
+                                                <label for="{{x.id}}">{{x.name}}</label>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -69,24 +73,24 @@
                     <div class="list-user">
                         <table class="table table-striped">
                             <thead>
-                            <th class="list-id">ID <span><i class="fa fa-sort" aria-hidden="true" ng-click="orderByMe('id')"></i></span></th>
-                            <th class="list-name">Name <span><i class="fa fa-sort" aria-hidden="true" ng-click="orderByMe('name')"></i></span></th>
-                            <th class="list-age">Age <span><i class="fa fa-sort" aria-hidden="true" ng-click="orderByMe('age')"></i></span></th>
-                            <th class="list-email">Email <span><i class="fa fa-sort" aria-hidden="true" ng-click="orderByMe('email')"></i></span></th>
-                            <th class="list-undo">Undo</th>
+                                <th class="list-id">ID <span><i class="fa fa-sort" aria-hidden="true" ng-click="orderByMe('id')"></i></span></th>
+                                <th class="list-name">Name <span><i class="fa fa-sort" aria-hidden="true" ng-click="orderByMe('name')"></i></span></th>
+                                <th class="list-age">Age <span><i class="fa fa-sort" aria-hidden="true" ng-click="orderByMe('age')"></i></span></th>
+                                <th class="list-email">Email <span><i class="fa fa-sort" aria-hidden="true" ng-click="orderByMe('email')"></i></span></th>
+                                <th class="list-undo">Undo</th>
                             </thead>
                             <tbody>
-                            <tr ng-repeat="y in listUsers | orderBy: myOrder">
-                                <td class="list-id">{{y.id}}</td>
-                                <td class="list-name">{{y.name}}</td>
-                                <td class="list-age">{{y.age}}</td>
-                                <td class="list-email">{{y.email}}</td>
-                                <td class="list-undo">
-                                    <button type="checkbox" class="close" aria-label="Close" ng-click="undo(y)">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </td>
-                            </tr>
+                                <tr ng-repeat="y in listUsers | orderBy: myOrder">
+                                    <td class="list-id">{{y.id}}</td>
+                                    <td class="list-name">{{y.name}}</td>
+                                    <td class="list-age">{{y.age}}</td>
+                                    <td class="list-email">{{y.email}}</td>
+                                    <td class="list-undo">
+                                        <button type="button" class="close" aria-label="Close" data-toggle="modal" data-target="#myModal" ng-click="get(y)">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -96,9 +100,23 @@
             </div>
             <!--End Content-->
         </div>
+        <!--Model Confirmation Box-->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <strong>Are you sure ?</strong>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-modal="userConfirm" ng-click="yesConfirm()">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <!--End Add User-->
+    <!--My Angular Script-->
+    <script src="./my.js"></script>
 </body>
 </html>
-
-<script src="./my.js"></script>
