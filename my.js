@@ -12,7 +12,7 @@ app.controller('users',function ($scope, $http) {
     $scope.getSearchText = function (text) {
         $scope.searchText = text;
     }
-    
+
     //If user delete searchText
     $scope.isSearchText = function () {
         if($scope.inputForSearch == '')
@@ -28,12 +28,8 @@ app.controller('users',function ($scope, $http) {
         }
         //Else(unchecked), find item by item.id and remove it
         else {
-            for (var i = 0; i < $scope.temp.length; i++) {
-                if ($scope.temp[i].id == id.id) {
-                    $scope.temp.splice(i, 1);
-                    break;
-                }
-            }
+            var index = $scope.temp.map(x => x.id).indexOf(id.id);
+            $scope.temp.splice(index,1);
         }
     }
 
@@ -55,15 +51,12 @@ app.controller('users',function ($scope, $http) {
         if($scope.temp.length != 0)
         {
             //Add temp array into listUsers array and remove all item
-            //in users array which has id = t   emp.item.id
+            //in users array which has id = temp.item.id
             $scope.listUsers = $scope.listUsers.concat($scope.temp);
 
-            for (var i = 0; i < $scope.temp.length; i++) {
-                for (var j = 0; j < $scope.users.length; j++) {
-                    if ($scope.users[j].id == $scope.temp[i].id) {
-                        $scope.users.splice(j, 1);
-                    }
-                }
+            for(var i=0;i< $scope.temp.length;i++){
+                var index = $scope.users.map(x => x.id).indexOf($scope.temp[i].id);
+                $scope.users.splice(index,1);
             }
             //Remove all item of temp array
             $scope.temp = [];
@@ -80,12 +73,8 @@ app.controller('users',function ($scope, $http) {
         if(userConfirm == true){
             $scope.users.push({name: id.name,id: id.id, age:id.age, email:id.email});
             //Remove it in listUsers
-            for (var i = 0; i < $scope.listUsers.length; i++){
-                if($scope.listUsers[i].id == id.id)
-                {
-                    $scope.listUsers.splice(i,1);
-                }
-            }
+            var index = $scope.listUsers.map(x => x.id).indexOf(id.id);
+            $scope.listUsers.splice(index,1);
         }
     }
     
