@@ -10,8 +10,15 @@ app.controller('users',function ($scope, $http) {
 
     //Get searchText from input field to filter
     $scope.getSearchText = function (text) {
-        console.log(text);
         $scope.searchText = text;
+    }
+    
+    //If user delete searchText
+    $scope.isSearchText = function () {
+        if($scope.inputForSearch == '')
+        {
+            $scope.searchText = '';
+        }
     }
 
     //Check checkbox status

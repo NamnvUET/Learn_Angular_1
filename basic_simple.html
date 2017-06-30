@@ -28,7 +28,7 @@
                     <div class="row">
                         <!--Search Input-->
                         <div class=" col-xs-10 input-group">
-                            <input class="form-control" type="text" placeholder="Search User" ng-model="inputForSearch" id="search-box">
+                            <input class="form-control" type="text" placeholder="Search User" ng-change="isSearchText()" ng-model="inputForSearch" id="search-box">
                             <span class="input-group-btn"><button class="btn btn-primary" id="search-btn" ng-click="getSearchText(inputForSearch)">Search</button></span>
                         </div>
                         <!--End Search Input-->
