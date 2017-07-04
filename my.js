@@ -39,15 +39,15 @@ app.controller('users',function ($scope, $http) {
     $scope.addSelected = function()
     {
         //If input checkAll selected
-        if($scope.checkAll == true) {
+        // if($scope.checkAll == true) {
             // if(userconfirm == true)
             // {
-                $scope.temp = $scope.temp.concat($scope.users);
+            //     $scope.temp = $scope.temp.concat($scope.users);
             // }
             // else{
             //     $scope.checkAll = false;
             // }
-        }
+        // }
 
         if($scope.temp.length != 0) {
             //Add temp array into listUsers array and remove all item

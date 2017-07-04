@@ -1,6 +1,6 @@
 .content .users .list, .content .scenario-name .list-user {
   width: 100%; }
-  .content .users .list thead > th, .content .scenario-name .list-user thead > th {
+  .content .users .list thead th, .content .scenario-name .list-user thead th {
     display: block; }
   .content .users .list tbody, .content .scenario-name .list-user tbody {
     display: block;
@@ -9,7 +9,7 @@
     .content .users .list tbody tr, .content .scenario-name .list-user tbody tr {
       display: block; }
     .content .users .list tbody tr:after, .content .scenario-name .list-user tbody tr:after {
-      content: ' ';
+      content: '';
       display: block;
       visibility: hidden;
       clear: both; }
